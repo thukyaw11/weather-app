@@ -17,7 +17,34 @@
     font-size: 30px;
     padding: 13px;
 }
+.icon.heart{
+    color: red;
+}
 .icon-lg{
     font-size: 40px;
     padding: 10px;
 }
+.heading{
+    color: white;
+    font-weight: bold;
+}
+.weather-card{
+    width: 100%;
+    height: auto;
+    background-color: rgba(255, 255, 255, .4);
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+.city_name{
+    float: left;
+    opacity: 1;
+    font-size: 18px;
+
+}
+.temper,.cloud{
+    font-size: 19px;
+}
+

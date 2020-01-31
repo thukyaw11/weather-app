@@ -12,6 +12,7 @@
       </div>
 
       <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
+        <a-icon type="heart" :class="[favorite?'icon heart':'icon']" @click="addToFavorite"/>
         <div class="location-box">
           <div class="location">{{ weather.name }}, {{ weather.sys.country }}</div>
           <div class="date">{{ dateBuilder() }}</div>
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 export default {
   name: "app",
   data() {
@@ -34,11 +36,15 @@ export default {
       api_key: "f78b3f3dc7775094fa266a638ff4d9c1",
       base_url: "https://api.openweathermap.org/data/2.5/",
       query: "",
-      weather: {}
+      weather: {},
+      itemsArray: [],
+      name: '',
+      favorite: false
     };
   },
   methods: {
     fetchWeather() {
+      this.favorite = false;
       fetch(
         `${this.base_url}weather?q=${this.query}&units=metric&APPID=${this.api_key}`
       )
@@ -80,9 +86,18 @@ export default {
       let month = months[d.getMonth()];
       let year = d.getFullYear();
       return `${day} ${date} ${month} ${year}`;
+    },
+    addToFavorite(){
+
+      if(!this.favorite){
+      this.favorite = !this.favorite;
+      this.itemsArray.push(this.weather);    
+      localStorage.setItem("value",JSON.stringify(this.itemsArray));
+      }
     }
-  }
+  },
 };
+/* eslint-enable no-console */
 </script>
 
 <style>
