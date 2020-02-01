@@ -37,7 +37,7 @@ export default {
       base_url: "https://api.openweathermap.org/data/2.5/",
       query: "",
       weather: {},
-      itemsArray: [],
+      itemsArray: localStorage.getItem('value') ? JSON.parse(localStorage.getItem('value')) : [],
       name: '',
       favorite: false
     };

@@ -17,10 +17,11 @@ export default {
   name: "app",
   data() {
     return {
-        weathers : []
+      weathers : localStorage.getItem('value') ? JSON.parse(localStorage.getItem('value')) : []
     };
   },
   mounted() {
+    console.log(this.weathers);
       this.weathers = JSON.parse(localStorage.getItem('value'));
   }
 };
